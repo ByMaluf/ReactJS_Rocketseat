@@ -1,6 +1,7 @@
 import styles from './sidebar.module.css'
 import galaxy from '../../assets/galaxy.jpg'
 import { PencilLine } from 'phosphor-react'
+import Avatar from '../Avatar';
 
 export default function Sidebar() {
   return (
@@ -8,8 +9,7 @@ export default function Sidebar() {
       <img className={styles.cover} src={galaxy} />
 
       <div className={styles.profile}>
-        <img className={styles.avatar} src="http://github.com/bymaluf.png" alt="" />
-
+        <Avatar src='http://github.com/bymaluf.png' />
         <strong>Brenno Ysrael</strong>
         <span>Full Stack</span>
       </div>
