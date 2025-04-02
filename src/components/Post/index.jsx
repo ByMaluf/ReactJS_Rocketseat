@@ -1,20 +1,32 @@
 import Avatar from '../Avatar';
 import Comment from '../Comment';
 import styles from './Post.module.css'
+import { format, formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale';
 
-export default function Post() {
+export default function Post({ author, publishedAt, content }) {
+
+  const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
+    locale: ptBR
+  });
+
+  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+    addSuffix: true,
+    locale: ptBR,
+  })
 
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <Avatar src="https://github.com/bymaluf.png" />
+          <Avatar src={author.avatarUrl} />
           <div className={styles.authorInfo}>
-            <strong>Diego Fernandes</strong>
-            <span>Web Developer</span>
+            <strong>{author.name}</strong>
+            <span>{author.role}</span>
           </div>
         </div>
-        <time title='11 de maio às 08:13h' dateTime='2022-05-11 08:13:30'>Publicado há 1h</time>
+        <time title={publishedDateFormatted} dateTime={publishedAt.toISOString()}>{publishedDateRelativeToNow}
+        </time>
       </header>
 
       <div className={styles.content}>
