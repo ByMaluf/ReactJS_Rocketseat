@@ -49,9 +49,9 @@ export default function Post({ author, publishedAt, content }) {
         {content.map(line =>
           line.type === 'paragraph'
             ?
-            <p>{line.content}</p>
+            <p key={line.content}>{line.content}</p>
             :
-            <p><a href='#'>{line.content}</a></p>
+            <p key={line.content}><a href='#'>{line.content}</a></p>
         )}
       </div>
 
@@ -70,7 +70,7 @@ export default function Post({ author, publishedAt, content }) {
       </form>
 
       <div className={styles.commentList}>
-        {comments.map(comment => <Comment content={comment} />)}
+        {comments.map((comment) => <Comment key={comment} content={comment} />)}
       </div>
     </article>
   );
