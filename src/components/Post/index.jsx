@@ -30,6 +30,10 @@ export default function Post({ author, publishedAt, content }) {
     setNewCommentText('')
   }
 
+  function deleteComment(comment) {
+    setComments( )
+    console.log(`Deletou o comemtário ${comment}`)
+  }
 
   return (
     <article className={styles.post}>
@@ -70,7 +74,7 @@ export default function Post({ author, publishedAt, content }) {
       </form>
 
       <div className={styles.commentList}>
-        {comments.map((comment) => <Comment key={comment} content={comment} />)}
+        {comments.map((comment) => <Comment key={comment} content={comment} deleteComment={deleteComment} />)}
       </div>
     </article>
   );
