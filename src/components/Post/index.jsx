@@ -31,7 +31,8 @@ export default function Post({ author, publishedAt, content }) {
   }
 
   function deleteComment(comment) {
-    setComments( )
+    const filter = comments.filter((item) => item != comment);
+    setComments(filter);
     console.log(`Deletou o comemtário ${comment}`)
   }
 
@@ -74,7 +75,7 @@ export default function Post({ author, publishedAt, content }) {
       </form>
 
       <div className={styles.commentList}>
-        {comments.map((comment) => <Comment key={comment} content={comment} deleteComment={deleteComment} />)}
+        {comments.map((comment) => <Comment key={comment} content={comment} onDeleteComment={deleteComment} />)}
       </div>
     </article>
   );
